@@ -1,0 +1,107 @@
+commit b048fb4bcfa46e92807d3439eb49b24a8a3924e8
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Sat Mar 19 16:56:07 2022 +0200
+
+    rm file 1, rename file2
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ tiedostoja/file3             | 1 +
+ 3 files changed, 1 insertion(+)
+
+commit 430de3741eb6c0e1f1739a81a9850fcc5c0635e3
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Sat Mar 19 16:53:35 2022 +0200
+
+    made tiedostoja and files 1-3
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+commit 676ba69c31af3a309398186d54d4ccb8efe588a3
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Sat Mar 19 16:44:52 2022 +0200
+
+    1&3 patched
+
+ eka.txt    | 2 ++
+ kolmas.txt | 1 +
+ 2 files changed, 3 insertions(+)
+
+commit 559f4b81e60375ec1df75e80a93fcc51c178946b
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Thu Mar 17 13:32:26 2022 +0200
+
+    eka uudelleennimetty
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 5a98fb9133ff7c6217d751870c665db5f02b0860
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Thu Mar 17 13:31:40 2022 +0200
+
+    toinen poistettu
+
+ toinen.txt | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 25b381885fd26bd9ba921e7eb8a8f8ea3622c68b
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Thu Mar 17 13:29:04 2022 +0200
+
+    poistettu puolet ja lisätty vähän
+
+ tiedosto.txt | 15 +--------------
+ 1 file changed, 1 insertion(+), 14 deletions(-)
+
+commit 47d1506216b999373d0be47a20f53fd551a3b297
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Thu Mar 17 13:25:21 2022 +0200
+
+    added lonk text
+
+ tiedosto.txt | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+commit 48537463745ec15388d30faf852bba1cd037f472
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Thu Mar 17 13:22:48 2022 +0200
+
+    lisää muutoksia
+
+ kolmas.txt      | 1 +
+ stuff/kalja.txt | 0
+ toinen.txt      | 1 +
+ 3 files changed, 2 insertions(+)
+
+commit 27daa5cd1f3fb92d05153a97680f1a9e2aa44ea0
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Thu Mar 17 13:21:09 2022 +0200
+
+    kolmas added
+
+ kolmas.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 4eab6999175349402eb48babe968922d507c0d26
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Thu Mar 17 13:20:10 2022 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 +
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+commit 08cd60b0326aa797762fa482acced4e2a53b83e8
+Author: Topi Pärssinen <parssinentopi@gmail.com>
+Date:   Thu Mar 17 13:17:59 2022 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
