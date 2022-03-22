@@ -4,5 +4,5 @@
 
 Tulee oleen **hullu** kurssi
 
-#### [Tree](https://github.com/emeraldgcube/ot-2022/blob/main/laskarit/viikko1/tree.txt)
+#### [Komentorivi](https://github.com/emeraldgcube/ot-2022/blob/main/laskarit/viikko1/komentorivi.txt)
 #### [Gitlog](https://github.com/emeraldgcube/ot-2022/blob/main/laskarit/viikko1/gitlog.txt)
