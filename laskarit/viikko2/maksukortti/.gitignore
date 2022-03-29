@@ -1,0 +1,6 @@
+/.pytest_cache/
+/htmlcov/
+/coverage/
+/src/tests/__pycache__/
+/.coverage
+/src/__pycache__
