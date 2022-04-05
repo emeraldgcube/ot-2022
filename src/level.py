@@ -1,4 +1,3 @@
-import tetrimino
 
 class Level:
     def __init__(self, random):
@@ -60,6 +59,7 @@ class Level:
         self.game_over=True
 
     def _check_for_full_row(self):
+        cleared_rows=0
         for row in range(0,22):
             block_amount=0
             for block in self.matrix[row]:
@@ -67,6 +67,10 @@ class Level:
                     block_amount+=1
             if block_amount == 10:
                 self._clear_row(row)
+                cleared_rows+=1
+        if cleared_rows == 4:
+            0
+            ### ui.notify_tetris
 
         
     def _clear_row(self, cleared_row):
@@ -87,9 +91,8 @@ class Level:
             self.control = ""
 
         if self.control == "down":
-            newpos = position[0]+1, position[1]
+            newpos = position[0] + 1, position[1]
             angle = self.all_tetriminos[-2][3]
-
             if self.intersects(newpos, angle):
                 self._new_tetrimino()
             else:
@@ -103,17 +106,12 @@ class Level:
                 self.all_tetriminos[-2][2] = newpos
             self.control = ""
 
-       # if self.control=="ccw":
-        #    self.all_tetriminos[-2][1]
-        # if self.control=="cw":
-        #    self.all_tetriminos[-2]
-
         if self.control == "drop":
             newpos = position[0] + 1, position[1]
             angle = self.all_tetriminos[-2][3]
-
+            self.control = "down"
+            self.controls()
             if not self.intersects(newpos, angle):
-                self.all_tetriminos[-2][2] = newpos
                 self.control = "drop"
                 self.controls()
         

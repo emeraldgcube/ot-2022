@@ -16,12 +16,11 @@ def main():
     screen_height = 22*scale
     window = pygame.display.set_mode((screen_width, screen_height))
     clock = Clock()
-    #collision=False
-    random=Random()
+    random = Random()
     level = Level(random)
     event_queue = EventQueue()
     renderer = Renderer(window, level, scale)
-    loop = GameLoop(level, renderer, event_queue, clock, scale)
+    loop = GameLoop(level, renderer, event_queue, clock)
     loop.start()
 
 if __name__ == "__main__":

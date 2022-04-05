@@ -2,12 +2,11 @@ import pygame
 import sys
 
 class GameLoop:
-    def __init__(self, level, renderer, event_queue, clock, scale):
+    def __init__(self, level, renderer, event_queue, clock):
         self._level = level
         self._renderer = renderer
         self._event_queue = event_queue
         self._clock = clock
-        self._scale = scale
         """set timer for block to fall"""
         self._clock.set_timer(25, int(1000/self._level.speed))
 
