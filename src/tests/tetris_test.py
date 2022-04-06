@@ -1,6 +1,6 @@
 import unittest
-from ..level import Level
-from ..game_loop import GameLoop
+from level import Level
+from game_loop import GameLoop
 
 class StubClock:
     def tick(self, fps):
@@ -38,11 +38,9 @@ class TestLevel(unittest.TestCase):
 
     def test_blocks_get_generated(self):
         loop = GameLoop(self.level, StubRenderer(), StubEventQueue(), StubClock())
-
-
-        self.assertEqual(self.level.all_tetriminos,
-        [[7, [[(0, 0), (0, 1), (1, 0), (1, 1)]], (0, 4), 0],
-         [5, [[(0, 0), (1, 0), (1, 1), (2, 1)], [(1, 0), (1, 1), (0, 1), (0, 2)]], (3, 13), 0]])
+        types = map(lambda x: x.type, self.level.all_tetriminos)
+        tetriminotypes = list(types)
+        self.assertEqual(tetriminotypes, [7, 5])
 
   #  def test_block_2(self:
        # level=Level(StubIO()))
