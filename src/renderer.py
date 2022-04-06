@@ -49,24 +49,24 @@ class Renderer:
 
         for a in range(0, 2):
             tetrimino = self._level.all_tetriminos[-(a+1)]
-            if tetrimino[0] == 1:
+            if tetrimino.type == 1:
                 color = 0, 255, 0
-            if tetrimino[0] == 2:
+            if tetrimino.type == 2:
                 color = 0, 0, 255
-            if tetrimino[0] == 3:
+            if tetrimino.type == 3:
                 color = 255, 255, 0
-            if tetrimino[0] == 4:
+            if tetrimino.type == 4:
                 color = 255, 0, 255
-            if tetrimino[0] == 5:
+            if tetrimino.type == 5:
                 color = 0, 255, 255
-            if tetrimino[0] == 6:
+            if tetrimino.type == 6:
                 color = 100, 100, 255
-            if tetrimino[0] == 7:
+            if tetrimino.type == 7:
                 color = 255, 0, 0
-            for block in tetrimino[1][tetrimino[3]%len(tetrimino[1])]:
+            for block in tetrimino.blocks[tetrimino.rotation%len(tetrimino.blocks)]:
                 #field is supposed to start at (8,-2)
-                y_coord = block[0]*self._scale+self._scale*tetrimino[2][0]
-                x_coord = block[1]*self._scale+8*self._scale+self._scale*tetrimino[2][1]
+                y_coord = block[0]*self._scale+self._scale*tetrimino.position[0]
+                x_coord = block[1]*self._scale+8*self._scale+self._scale*tetrimino.position[1]
                 pygame.draw.rect(self._display, color, 
                 pygame.Rect(x_coord, y_coord, self._scale, self._scale))
 
