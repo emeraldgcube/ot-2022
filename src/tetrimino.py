@@ -27,6 +27,3 @@ class Tetrimino:
         if self.type == 7:
             blocks = [[(0, 0), (0, 1), (1, 0), (1, 1)]]
         return blocks
-
-    def __repr__(self):
-        return str([self.type, self.blocks, self.position, self.rotation])

@@ -68,34 +68,34 @@ class Level:
                 
 
     def controls(self):
-        tetrimino_at_play = self.all_tetriminos[-2]
-        position = tetrimino_at_play.position
+        current_piece = self.all_tetriminos[-2]
+        position = current_piece.position
         if self.control == "left":
             newpos = position[0], position[1]-1
-            angle = tetrimino_at_play.rotation
+            angle = current_piece.rotation
             if not self.intersects(newpos, angle):
-                tetrimino_at_play.position = newpos
+                current_piece.position = newpos
             self.control = ""
 
         if self.control == "down":
             newpos = position[0] + 1, position[1]
-            angle = tetrimino_at_play.rotation
+            angle = current_piece.rotation
             if self.intersects(newpos, angle):
                 self._new_tetrimino()
             else:
-                tetrimino_at_play.position = newpos
+                current_piece.position = newpos
             self.control = ""
 
         if self.control == "right":
             newpos = position[0], position[1]+1
-            angle = tetrimino_at_play.rotation
+            angle = current_piece.rotation
             if not self.intersects(newpos, angle):
-                tetrimino_at_play.position = newpos
+                current_piece.position = newpos
             self.control = ""
 
         if self.control == "drop":
             newpos = position[0] + 1, position[1]
-            angle = tetrimino_at_play.rotation
+            angle = current_piece.rotation
             self.control = "down"
             self.controls()
             if not self.intersects(newpos, angle):
@@ -105,9 +105,9 @@ class Level:
             self.control = ""
 
         if self.control == "rotate":
-            newangle = tetrimino_at_play.rotation + 1
+            newangle = current_piece.rotation + 1
             if not self.intersects(position, newangle):
-                tetrimino_at_play.rotation += 1
+                current_piece.rotation += 1
             self.control = ""
 
 

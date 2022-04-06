@@ -19,6 +19,7 @@ class GameLoop:
 
     def go_throught_events(self):
         for event in self._event_queue.get():
+            print (event.type)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -29,6 +30,7 @@ class GameLoop:
                     self._level.control = "right"
                 if event.key == pygame.K_SPACE:
                     self._level.control = "drop"
+                    print("space_noticed")
                 if event.key == pygame.K_DOWN:
                     self._level.control = "down"
                 if event.key == pygame.K_UP:
@@ -41,3 +43,7 @@ class GameLoop:
 
             if event.type == 25:
                 self._level.control = "down"
+
+            # for testing
+            if event.type == "stop_loop":
+                self._level.game_over = True
