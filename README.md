@@ -24,7 +24,7 @@ Sovellus on testattu Python-versiolla 3.8.
 Testikattavuusraportin voi generoida komennoilla:
 
 ```bash
-poetry run invoke coveragereport
+poetry run invoke coverage-report
 ```
 
 Raportti generoituu _htmlcov_-hakemistoon.
