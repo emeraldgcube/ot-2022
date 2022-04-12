@@ -1,7 +1,7 @@
 import pygame
 from entities.level import Level
 from renderer import Renderer
-from game_loop import GameLoop
+from services.game_loop import GameLoop
 from event_queue import EventQueue
 from neededthings.clock import Clock
 from neededthings.randomgenerator import Random

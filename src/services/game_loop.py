@@ -29,7 +29,6 @@ class GameLoop:
                     self._level.control = "right"
                 if event.key == pygame.K_SPACE:
                     self._level.control = "drop"
-                    print("space_noticed")
                 if event.key == pygame.K_DOWN:
                     self._level.control = "down"
                 if event.key == pygame.K_UP:

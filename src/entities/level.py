@@ -1,4 +1,4 @@
-from tetrimino import Tetrimino
+from entities.tetrimino import Tetrimino
 
 class Level:
     def __init__(self, random):
