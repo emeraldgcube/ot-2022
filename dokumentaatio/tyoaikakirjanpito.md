@@ -4,4 +4,5 @@
 | :----:|:-----| :------|
 | 29.3  | 2    | määrittelydokumentointi yms. |
 | 5.4   | 7    | testaus, yleinen koodista selvää ottaminen ja refaktoroinnin suunnittelu |
-| yht   | 9    | |
+| 6.4   | 5    | tetrimino-objektin refaktorointi, uudet testit |
+| yht   | 14    | |
