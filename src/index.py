@@ -1,10 +1,9 @@
 import pygame
-from pygame import event
-from neededthings.clock import Clock
 from level import Level
 from renderer import Renderer
 from game_loop import GameLoop
 from event_queue import EventQueue
+from neededthings.clock import Clock
 from neededthings.randomgenerator import Random
 
 def main():
@@ -25,3 +24,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    

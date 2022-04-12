@@ -1,5 +1,4 @@
 import pygame
-from pygame import display
 
 class Renderer:
     def __init__(self, display, level, scale):
@@ -8,6 +7,12 @@ class Renderer:
         self._scale = scale
 
     def render(self):
+        self.render_edges()
+        self.render_matrix()
+        self.render_blocks_not_set_yet()
+
+    def render_edges(self):
+        # renders edges 
         self._display.fill((0, 0, 0))
         pygame.draw.rect(self._display, (15, 15, 155),
                          [int(7.4*self._scale), 0, int(self._scale*0.6), 22*self._scale])
@@ -20,10 +25,11 @@ class Renderer:
         pygame.draw.rect(self._display, (0, 0, 0),
                          [int(20*self._scale), int(2.5*self._scale), self._scale*4.6, self._scale*5])
 
-
+        # renders each block in matriximport pygame
+    def render_matrix(self):
         for row in range(0, 22):
             for column in range(0, 10):
-                number=self._level.matrix[row][column]
+                number = self._level.matrix[row][column]
                 if number == 1:
                     color = 0, 255, 0
                 if number == 2:
@@ -43,12 +49,13 @@ class Renderer:
 
                 y_coord = row*self._scale
                 x_coord = column*self._scale+8*self._scale
-                pygame.draw.rect(self._display, color, 
-                pygame.Rect(x_coord, y_coord, self._scale, self._scale))
+                pygame.draw.rect(self._display, color,
+                                 pygame.Rect(x_coord, y_coord, self._scale, self._scale))
 
-
-        for a in range(0, 2):
-            tetrimino = self._level.all_tetriminos[-(a+1)]
+    def render_blocks_not_set_yet(self):
+        ### renders the two last tetriminos in array, making moving and "next" block visible
+        for number in range(0, 2):
+            tetrimino = self._level.all_tetriminos[-(number+1)]
             if tetrimino.type == 1:
                 color = 0, 255, 0
             if tetrimino.type == 2:
@@ -67,7 +74,7 @@ class Renderer:
                 #field is supposed to start at (8,-2)
                 y_coord = block[0]*self._scale+self._scale*tetrimino.position[0]
                 x_coord = block[1]*self._scale+8*self._scale+self._scale*tetrimino.position[1]
-                pygame.draw.rect(self._display, color, 
-                pygame.Rect(x_coord, y_coord, self._scale, self._scale))
+                pygame.draw.rect(self._display, color,
+                                 pygame.Rect(x_coord, y_coord, self._scale, self._scale))
 
         pygame.display.flip()

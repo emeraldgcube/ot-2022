@@ -9,3 +9,4 @@ class Clock:
 
     def set_timer(self, howsets, time):
         return pygame.time.set_timer(howsets, time)
+        

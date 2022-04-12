@@ -58,7 +58,6 @@ class StubRandom:
         else:
             return 1
 
-
 class StubRenderer:
     def render(self):
         pass
@@ -66,8 +65,6 @@ class StubRenderer:
 class TestLevel(unittest.TestCase):
     def setUp(self):
         self.level = Level(StubRandom())
-
-
 
     def test_blocks_get_generated(self):
         loop = GameLoop(self.level, StubRenderer(), StubEventQueue(), StubClock())

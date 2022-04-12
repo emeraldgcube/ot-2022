@@ -4,7 +4,7 @@ class Tetrimino:
         self.blocks = self.get_blocks()
         self.position = (3, 13)
         self.rotation = 0
-        
+
     def rotate(self):
         self.rotation += 1
 

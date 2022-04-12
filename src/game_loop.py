@@ -1,5 +1,5 @@
-import pygame
 import sys
+import pygame
 
 class GameLoop:
     def __init__(self, level, renderer, event_queue, clock):
@@ -11,7 +11,7 @@ class GameLoop:
         self._clock.set_timer(25, int(1000/self._level.speed))
 
     def start(self):
-        while self._level.game_over == False:
+        while not self._level.game_over:
             self.go_throught_events()
             self._renderer.render()
             self._level.controls()
@@ -19,7 +19,6 @@ class GameLoop:
 
     def go_throught_events(self):
         for event in self._event_queue.get():
-            print (event.type)
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
