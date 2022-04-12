@@ -44,4 +44,4 @@ poetry run invoke lint
 - [Työaikakirjanpito](./dokumentaatio/tyoaikakirjanpito.md)
 - [Changelog](./dokumentaatio/changelog.md)
 - [Sekvenssikaavio](./dokumentaatio/kuvat/sekvenssikaaviotetris.jpg)
-
+- [Arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
