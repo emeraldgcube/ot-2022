@@ -35,6 +35,7 @@ Pelin jälkeen nähdään tekstikenttä ja "insert name", jonka jälkeen nähdä
 - Palikan voi holdata
 - Pelaaja näkee pisteensä pelatessa ja pelin jälkeen
 - Pelaaja voi tallettaa pisteensä hiscoreen
+- Pelaaja voi aloittaa uuden pelin 
 
 ## Ajan salliessa
 
