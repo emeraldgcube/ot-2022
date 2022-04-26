@@ -7,3 +7,6 @@
 
 - Tehty tetrimino-objektista järkevä, oma luokkansa
 - Lisätty testejä 
+
+## Viikko 5
+- Rendererin muutokset, loppuscriini ja uuden pelin mahdollisuus lisätty
