@@ -1,6 +1,6 @@
 import unittest
-from level import Level
-from game_loop import GameLoop
+from entities.level import Level
+from services.game_loop import GameLoop
 import pygame
 
 class StubClock:
@@ -59,7 +59,10 @@ class StubRandom:
             return 1
 
 class StubRenderer:
-    def render(self):
+    def render_game(self):
+        pass
+
+    def render_game_and_hiscore(self):
         pass
 
 class TestLevel(unittest.TestCase):
@@ -67,13 +70,16 @@ class TestLevel(unittest.TestCase):
         self.level = Level(StubRandom())
 
     def test_blocks_get_generated(self):
-        loop = GameLoop(self.level, StubRenderer(), StubEventQueue(), StubClock())
+        queue = StubEventQueue([StubEvent("stop_loop")])
+        loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
+        loop.start()
         types = map(lambda x: x.type, self.level.all_tetriminos)
         tetriminotypes = list(types)
         self.assertEqual(tetriminotypes, [7, 6])
 
     def test_movement_no_inputs(self):
-        queue = StubEventQueue([])
+        stub_press_space = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
+        queue = StubEventQueue([stub_press_space*10, StubEvent("stop_loop")])
         loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
         loop.start()
         types = map(lambda x: x.type, self.level.all_tetriminos)

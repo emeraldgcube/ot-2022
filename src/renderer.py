@@ -6,10 +6,37 @@ class Renderer:
         self._level = level
         self._scale = scale
 
-    def render(self):
+
+    def render_text(self, text, color, size, x, y):
+        """ renders text in wanted position, size and color 
+        parameters: text, color, size, x, y
+        """
+        font = pygame.font.SysFont("Arial", size*self._scale)
+        if color == "red":
+            color = (255, 100, 0)
+        if color == "blue":
+            color = (0, 0, 255)
+        score = font.render(text, True, color)
+        self._display.blit(score, (x*self._scale, y*self._scale))
+
+    def render_game(self):
         self.render_edges()
         self.render_matrix()
         self.render_blocks_not_set_yet()
+        self.render_score()
+        pygame.display.flip()
+        
+    def render_game_and_hiscore(self):
+        self.render_edges()
+        self.render_matrix()
+        self.render_blocks_not_set_yet()
+        self.render_score()
+        self.render_text("GAME OVER", "blue", 3, 4, 4)
+        self.render_text("AGAIN?", "red", 2, 10, 7)
+        pygame.display.flip()
+
+    def render_score(self):
+        self.render_text(str(self._level.score), "red", 2, 2, 4)
 
     def render_edges(self):
         # renders edges 
@@ -25,7 +52,7 @@ class Renderer:
         pygame.draw.rect(self._display, (0, 0, 0),
                          [int(20*self._scale), int(2.5*self._scale), self._scale*4.6, self._scale*5])
 
-        # renders each block in matriximport pygame
+        # renders each block in matrix
     def render_matrix(self):
         for row in range(0, 22):
             for column in range(0, 10):
@@ -77,4 +104,3 @@ class Renderer:
                 pygame.draw.rect(self._display, color,
                                  pygame.Rect(x_coord, y_coord, self._scale, self._scale))
 
-        pygame.display.flip()

@@ -16,6 +16,7 @@ class Level:
         self._generate_tetrimino()
         self._new_tetrimino()
         self.game_over = False
+        self.score = 0
 
     def _generate_tetrimino(self):
         random = self._random.randint_one_to_seven() # tetrimino types 1-7
@@ -53,8 +54,9 @@ class Level:
             if block_amount == 10:
                 self._clear_row(row)
                 cleared_rows += 1
+                self.score += 50
         if cleared_rows == 4:
-            0
+            self.score += 100
             ### ui.notify_tetris
 
 
@@ -64,6 +66,7 @@ class Level:
             #moves columns downwards by one starting from the lowest
             for block in range(10):
                 self.matrix[cleared_row-row][block] = self.matrix[cleared_row-row-1][block]
+        
 
 
     def controls(self):
@@ -111,7 +114,8 @@ class Level:
 
 
     def intersects(self, newpos, angle):
-        """Checks for intersecting blocks on path of each block
+        """Checks for intersecting blocks on path of each block of tetrimino.
+        Parameters: newpos (new position) and angle (new angle)
         """
         tetrimino = self.all_tetriminos[-2]
         oldpos = tetrimino.position

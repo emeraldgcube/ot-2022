@@ -1,5 +1,6 @@
 import sys
 import pygame
+import os
 
 class GameLoop:
     def __init__(self, level, renderer, event_queue, clock):
@@ -9,15 +10,22 @@ class GameLoop:
         self._clock = clock
         """set timer for block to fall"""
         self._clock.set_timer(25, int(1000/self._level.speed))
+        self.stop_loop = False
 
     def start(self):
-        while not self._level.game_over:
-            self.go_throught_events()
-            self._renderer.render()
-            self._level.controls()
-            self._clock.tick(60)
+        while not self.stop_loop:
+            while not self._level.game_over:
+                self.go_through_events_during_game()
+                self._renderer.render_game()
+                self._level.controls()
+                self._clock.tick(60)
 
-    def go_throught_events(self):
+            while self._level.game_over:
+                self.go_through_events_in_hiscore()
+                self._renderer.render_game_and_hiscore()
+                self._clock.tick(30)
+
+    def go_through_events_during_game(self):
         for event in self._event_queue.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -44,4 +52,12 @@ class GameLoop:
 
             # for testing
             if event.type == "stop_loop":
-                self._level.game_over = True
+                self.stop_loop = True
+
+    def go_through_events_in_hiscore(self):
+        for event in self._event_queue.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                os.execl(sys.executable, sys.executable, *sys.argv)
