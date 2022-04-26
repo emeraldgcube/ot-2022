@@ -6,4 +6,5 @@
 | 5.4   | 7    | testaus, yleinen koodista selvää ottaminen ja refaktoroinnin suunnittelu |
 | 6.4   | 5    | tetrimino-objektin refaktorointi, uudet testit |
 | 12.4  | 2    | yritystä erotella sovelluslogiikka käyttöliittymästä |
-| yht   | 16   | |
+| 26.4  | 6    | muutoksia lopetusruutua varten, tuloksetonta testien debuggausta |
+| yht   | 22   | |
