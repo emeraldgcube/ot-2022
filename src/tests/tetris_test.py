@@ -70,16 +70,14 @@ class TestLevel(unittest.TestCase):
         self.level = Level(StubRandom())
 
     def test_blocks_get_generated(self):
-        queue = StubEventQueue([StubEvent("stop_loop")])
-        loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
-        loop.start()
+        loop = GameLoop(self.level, StubRenderer(), StubEventQueue(), StubClock())
         types = map(lambda x: x.type, self.level.all_tetriminos)
         tetriminotypes = list(types)
         self.assertEqual(tetriminotypes, [7, 6])
 
     def test_movement_no_inputs(self):
         stub_press_space = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
-        queue = StubEventQueue([stub_press_space*10, StubEvent("stop_loop")])
+        queue = StubEventQueue([stub_press_space, StubEvent("stop_loop")])
         loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
         loop.start()
         types = map(lambda x: x.type, self.level.all_tetriminos)

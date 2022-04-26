@@ -7,9 +7,9 @@ class Renderer:
         self._scale = scale
 
 
-    def render_text(self, text, color, size, x, y):
-        """ renders text in wanted position, size and color 
-        parameters: text, color, size, x, y
+    def render_text(self, text, color, size, x_coord, y_coord):
+        """ renders text in wanted position, size and color
+        parameters: text, color, size, x_coord, y_coord
         """
         font = pygame.font.SysFont("Arial", size*self._scale)
         if color == "red":
@@ -17,7 +17,7 @@ class Renderer:
         if color == "blue":
             color = (0, 0, 255)
         score = font.render(text, True, color)
-        self._display.blit(score, (x*self._scale, y*self._scale))
+        self._display.blit(score, (x_coord*self._scale, y_coord*self._scale))
 
     def render_game(self):
         self.render_edges()
@@ -25,7 +25,7 @@ class Renderer:
         self.render_blocks_not_set_yet()
         self.render_score()
         pygame.display.flip()
-        
+
     def render_game_and_hiscore(self):
         self.render_edges()
         self.render_matrix()
@@ -39,7 +39,7 @@ class Renderer:
         self.render_text(str(self._level.score), "red", 2, 2, 4)
 
     def render_edges(self):
-        # renders edges 
+        # renders edges
         self._display.fill((0, 0, 0))
         pygame.draw.rect(self._display, (15, 15, 155),
                          [int(7.4*self._scale), 0, int(self._scale*0.6), 22*self._scale])
@@ -103,4 +103,3 @@ class Renderer:
                 x_coord = block[1]*self._scale+8*self._scale+self._scale*tetrimino.position[1]
                 pygame.draw.rect(self._display, color,
                                  pygame.Rect(x_coord, y_coord, self._scale, self._scale))
-

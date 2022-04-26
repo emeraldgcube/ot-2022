@@ -1,6 +1,6 @@
 import sys
-import pygame
 import os
+import pygame
 
 class GameLoop:
     def __init__(self, level, renderer, event_queue, clock):

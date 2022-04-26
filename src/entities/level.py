@@ -66,7 +66,6 @@ class Level:
             #moves columns downwards by one starting from the lowest
             for block in range(10):
                 self.matrix[cleared_row-row][block] = self.matrix[cleared_row-row-1][block]
-        
 
 
     def controls(self):

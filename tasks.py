@@ -9,6 +9,10 @@ def test(ctx):
     ctx.run("pytest src")
 
 @task
+def testtrace(ctx):
+    ctx.run("pytest src --trace")
+
+@task
 def coverage(ctx):
     ctx.run("coverage run --branch -m pytest src")
 
