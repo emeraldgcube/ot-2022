@@ -23,19 +23,19 @@ Pelin jälkeen nähdään tekstikenttä ja "insert name", jonka jälkeen nähdä
 
 ## Perusversion tarjoama toiminnallisuus
 
-- Pelissä on pelikenttä 
-- Palikkoja on 7 erilaista 
-- Palikkoja voi kääntää 
-- Palikat putoaa 
-- Palikoita voi siirtää 
-- Seuraavan palikan näkee 
-- Palikat ei mene rajojen yli  
-- Palikat ei mene toistensa päälle 
-- Täysi palikkarivi katoaa 
+- Pelissä on pelikenttä ✓
+- Palikkoja on 7 erilaista ✓
+- Palikkoja voi kääntää ✓
+- Palikat putoaa ✓
+- Palikoita voi siirtää ✓
+- Seuraavan palikan näkee ✓
+- Palikat ei mene rajojen yli  ✓
+- Palikat ei mene toistensa päälle ✓
+- Täysi palikkarivi katoaa ✓
 - Palikan voi holdata
-- Pelaaja näkee pisteensä pelatessa ja pelin jälkeen
+- Pelaaja näkee pisteensä pelatessa ja pelin jälkeen ✓
 - Pelaaja voi tallettaa pisteensä hiscoreen
-- Pelaaja voi aloittaa uuden pelin 
+- Pelaaja voi aloittaa uuden pelin ✓
 
 ## Ajan salliessa
 
