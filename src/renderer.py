@@ -1,4 +1,5 @@
 import pygame
+from services.hiscore import Hiscore
 
 class Renderer:
     def __init__(self, display, level, scale):
@@ -33,7 +34,16 @@ class Renderer:
         self.render_score()
         self.render_text("GAME OVER", "blue", 3, 4, 4)
         self.render_text("AGAIN?", "red", 2, 10, 7)
+        self.render_hiscore()
         pygame.display.flip()
+
+    def render_hiscore(self):
+        hiscore = Hiscore().get_top_five()
+        for item in range(5):
+            name = hiscore[item][0]
+            score = hiscore[item][1]
+            self.render_text(str(name), "yellow", 3, 4, 3*item+4)
+            self.render_text(str(score), "yellow", 3, 12, 3*item+4)
 
     def render_score(self):
         self.render_text(str(self._level.score), "red", 2, 2, 4)

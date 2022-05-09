@@ -7,8 +7,8 @@ authors = ["emeraldgcube <78031592+emeraldgcube@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 invoke = "^1.6.0"
-pygame = "^2.1.0"
 coverage = "^6.2"
+pygame = "^2.1.2"
 
 [tool.poetry.dev-dependencies]
 pylint = "^2.12.1"
