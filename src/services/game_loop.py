@@ -13,17 +13,17 @@ class GameLoop:
         self.stop_loop = False
 
     def start(self):
-        while not self.stop_loop:
-            while not self._level.game_over:
-                self.go_through_events_during_game()
-                self._renderer.render_game()
-                self._level.controls()
-                self._clock.tick(60)
+        while not self._level.game_over and not self.stop_loop:
+            self.go_through_events_during_game()
+            self._renderer.render_game()
+            self._level.controls()
+            self._clock.tick(60)
 
-            while self._level.game_over:
-                self.go_through_events_in_hiscore()
-                self._renderer.render_game_and_hiscore()
-                self._clock.tick(30)
+        while self._level.game_over and not self.stop_loop:
+            self.go_through_events_in_hiscore()
+            self._renderer.render_game_and_hiscore()
+            self._clock.tick(30)
+            
 
     def go_through_events_during_game(self):
         for event in self._event_queue.get():

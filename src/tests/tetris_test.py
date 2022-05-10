@@ -82,7 +82,7 @@ class TestLevel(unittest.TestCase):
         loop.start()
         types = map(lambda x: x.type, self.level.all_tetriminos)
         tetriminotypes = list(types)
-        self.assertEqual(tetriminotypes, [7, 6, 5, 4, 3, 2, 1, 1, 1, 1])
+        self.assertEqual(tetriminotypes, [7, 6, 5])
 
     def test_movement_dropdown(self):
         stub_press_space = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
