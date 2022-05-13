@@ -60,3 +60,7 @@ class GameLoop:
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 os.execl(sys.executable, sys.executable, *sys.argv)
+
+            # for testing
+            if event.type == "stop_loop":
+                self.stop_loop = True

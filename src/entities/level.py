@@ -1,4 +1,5 @@
 from entities.tetrimino import Tetrimino
+from services.hiscore import Hiscore
 
 class Level:
     def __init__(self, random):
@@ -17,6 +18,7 @@ class Level:
         self._new_tetrimino()
         self.game_over = False
         self.score = 0
+        self.hiscore = Hiscore()
 
     def _generate_tetrimino(self):
         random = self._random.randint_one_to_seven() # tetrimino types 1-7
@@ -43,6 +45,7 @@ class Level:
 
     def _game_over(self):
         self.game_over = True
+        self.hiscore.add_score(self.score)
 
     def _check_for_full_row(self):
         cleared_rows = 0

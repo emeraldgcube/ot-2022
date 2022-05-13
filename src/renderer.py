@@ -12,13 +12,13 @@ class Renderer:
         """ renders text in wanted position, size and color
         parameters: text, color, size, x_coord, y_coord
         """
-        font = pygame.font.SysFont("Arial", size*self._scale)
+        font = pygame.font.SysFont("Arial", int(size*self._scale))
         if color == "red":
             color = (255, 100, 0)
         if color == "blue":
             color = (0, 0, 255)
         score = font.render(text, True, color)
-        self._display.blit(score, (x_coord*self._scale, y_coord*self._scale))
+        self._display.blit(score, (int(x_coord*self._scale), int(y_coord*self._scale)))
 
     def render_game(self):
         self.render_edges()
@@ -32,19 +32,28 @@ class Renderer:
         self.render_matrix()
         self.render_blocks_not_set_yet()
         self.render_score()
-        self.render_text("GAME OVER", "blue", 3, 4, 4)
-        self.render_text("AGAIN?", "red", 2, 10, 7)
+        self.render_text("GAME OVER", "blue", 1, 0.8, 8)
+        self.render_text("AGAIN?", "orange", 1.2, 1.6, 10)
         self.render_hiscore()
         pygame.display.flip()
 
     def render_hiscore(self):
-        hiscore = Hiscore().get_top_five()
-        for item in range(5):
-            name = hiscore[item][0]
-            score = hiscore[item][1]
-            self.render_text(str(name), "yellow", 3, 4, 3*item+4)
-            self.render_text(str(score), "yellow", 3, 12, 3*item+4)
-
+        hiscore = Hiscore()
+        pygame.draw.rect(
+            self._display,
+            (192, 192, 192),
+            [self._scale * 8, self._scale * 1, self._scale*16, self._scale*19]
+            )
+        five_best = hiscore.get_top_five()
+        own_best = hiscore.get_highest_own()[0]
+        five_best.append(("Your Best", own_best))
+        for item in range(6):
+            print(five_best)
+            name = five_best[item][0]
+            score = five_best[item][1]
+            self.render_text(str(name), "yellow", 1.6, 10, 3*item+2)
+            self.render_text(str(score), "yellow", 1.6, 18, 3*item+2)
+        
     def render_score(self):
         self.render_text(str(self._level.score), "red", 2, 2, 4)
 
