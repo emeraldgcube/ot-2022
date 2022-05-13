@@ -57,7 +57,6 @@ class Level:
                 self.score += 50
         if cleared_rows == 4:
             self.score += 100
-            ### ui.notify_tetris
 
 
     def _clear_row(self, cleared_row):
@@ -68,9 +67,11 @@ class Level:
                 self.matrix[cleared_row-row][block] = self.matrix[cleared_row-row-1][block]
 
 
-    def controls(self):
+    def controls(self, control):
+        self.control = control
         current_piece = self.all_tetriminos[-2]
         position = current_piece.position
+        angle = current_piece.rotation
         if self.control == "left":
             newpos = position[0], position[1]-1
             angle = current_piece.rotation
@@ -80,7 +81,6 @@ class Level:
 
         if self.control == "down":
             newpos = position[0] + 1, position[1]
-            angle = current_piece.rotation
             if self.intersects(newpos, angle):
                 self._new_tetrimino()
             else:
@@ -89,26 +89,22 @@ class Level:
 
         if self.control == "right":
             newpos = position[0], position[1]+1
-            angle = current_piece.rotation
             if not self.intersects(newpos, angle):
                 current_piece.position = newpos
             self.control = ""
 
         if self.control == "drop":
             newpos = position[0] + 1, position[1]
-            angle = current_piece.rotation
-            self.control = "down"
-            self.controls()
+            self.controls("down")
             if not self.intersects(newpos, angle):
-                self.control = "drop"
-                self.controls()
+                self.controls("drop")
             self.control = ""
 
 
         if self.control == "rotate":
             newangle = current_piece.rotation + 1
             if not self.intersects(position, newangle):
-                current_piece.rotation += 1
+                current_piece.rotate()
             self.control = ""
 
 
@@ -120,7 +116,8 @@ class Level:
         oldpos = tetrimino.position
         y_difference = oldpos[0] - newpos[0]
         x_difference = oldpos[1] - newpos[1]
-        for block in tetrimino.blocks[angle%len(tetrimino.blocks)]:
+        current_rotation = tetrimino.blocks[angle%len(tetrimino.blocks)]
+        for block in current_rotation:
             y_coord = block[0]+oldpos[0] - y_difference
             x_coord = block[1]+oldpos[1] - x_difference
             if (y_coord >= 22 or

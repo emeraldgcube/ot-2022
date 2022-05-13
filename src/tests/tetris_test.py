@@ -69,6 +69,9 @@ class TestLevel(unittest.TestCase):
     def setUp(self):
         self.level = Level(StubRandom())
 
+    def makeStubSpace(self):
+        return StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
+
     def test_blocks_get_generated(self):
         loop = GameLoop(self.level, StubRenderer(), StubEventQueue(), StubClock())
         types = map(lambda x: x.type, self.level.all_tetriminos)
@@ -77,12 +80,20 @@ class TestLevel(unittest.TestCase):
 
     def test_movement_no_inputs(self):
         stub_press_space = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
-        queue = StubEventQueue([stub_press_space, StubEvent("stop_loop")])
+        stub_press_down = StubEvent(pygame.KEYDOWN, pygame.K_DOWN)
+        stub_press_up = StubEvent(pygame.KEYDOWN, pygame.K_UP)
+        stub_press_left = StubEvent(pygame.KEYDOWN, pygame.K_LEFT)
+        stub_press_right = StubEvent(pygame.KEYDOWN, pygame.K_RIGHT)
+
+        queue = StubEventQueue([stub_press_space, stub_press_down, stub_press_up,
+                                stub_press_left, stub_press_right, stub_press_space,
+                                self.makeStubSpace(), self.makeStubSpace(), stub_press_space,
+                                stub_press_space, StubEvent("stop_loop")])
         loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
         loop.start()
         types = map(lambda x: x.type, self.level.all_tetriminos)
         tetriminotypes = list(types)
-        self.assertEqual(tetriminotypes, [7, 6, 5])
+        self.assertEqual(tetriminotypes, [7, 6, 5, 4, 3, 2, 1, 1])
 
     def test_movement_dropdown(self):
         stub_press_space = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)

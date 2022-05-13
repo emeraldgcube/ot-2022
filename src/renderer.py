@@ -104,7 +104,7 @@ class Renderer:
     def render_blocks_not_set_yet(self):
         ### renders the two last tetriminos in array, making moving and "next" block visible
         for number in range(0, 2):
-            tetrimino = self._level.all_tetriminos[-(number+1)]
+            tetrimino = self._level.all_tetriminos[-(number+1)] # indice -1 and -2
             if tetrimino.type == 1:
                 color = 0, 255, 0
             if tetrimino.type == 2:

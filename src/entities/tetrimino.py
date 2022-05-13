@@ -24,6 +24,6 @@ class Tetrimino:
             blocks = [[(0, 0), (1, 0), (1, 1), (2, 1)], [(1, 0), (1, 1), (0, 1), (0, 2)]]
         if self.type == 6: # Z
             blocks = [[(1, 0), (2, 0), (0, 1), (1, 1)], [(0, 0), (0, 1), (1, 1), (1, 2)]]
-        if self.type == 7:
+        if self.type == 7: # O
             blocks = [[(0, 0), (0, 1), (1, 0), (1, 1)]]
         return blocks
