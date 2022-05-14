@@ -2,7 +2,14 @@ import pygame
 from services.hiscore import Hiscore
 
 class Renderer:
+    """ Class that takes care of rendering in pygame """
+
     def __init__(self, display, level, scale):
+        """Initialize renderer.
+        args: display aka the pygame window
+              level for rendering pieces of level
+              scale for future scaling of game window
+        """
         self._display = display
         self._level = level
         self._scale = scale
@@ -21,6 +28,7 @@ class Renderer:
         self._display.blit(score, (int(x_coord*self._scale), int(y_coord*self._scale)))
 
     def render_game(self):
+        """ renders the window during game."""
         self.render_edges()
         self.render_matrix()
         self.render_blocks_not_set_yet()
@@ -28,6 +36,8 @@ class Renderer:
         pygame.display.flip()
 
     def render_game_and_hiscore(self):
+        """ renders game in the background and hiscore on top of it.
+         used after the game has ended. """
         self.render_edges()
         self.render_matrix()
         self.render_blocks_not_set_yet()
@@ -38,6 +48,7 @@ class Renderer:
         pygame.display.flip()
 
     def render_hiscore(self):
+        """ own function for rendering hiscore """
         hiscore = Hiscore()
         pygame.draw.rect(
             self._display,
@@ -53,11 +64,13 @@ class Renderer:
             score = five_best[item][1]
             self.render_text(str(name), "yellow", 1.6, 10, 3*item+2)
             self.render_text(str(score), "yellow", 1.6, 18, 3*item+2)
-        
+
     def render_score(self):
+        """ renders score on gamefield """
         self.render_text(str(self._level.score), "red", 2, 2, 4)
 
     def render_edges(self):
+        """ renders edges on field """
         # renders edges
         self._display.fill((0, 0, 0))
         pygame.draw.rect(self._display, (15, 15, 155),
@@ -83,8 +96,8 @@ class Renderer:
             [int(20*self._scale), int(2.5*self._scale), self._scale*4.6, self._scale*5]
         )
 
-        # renders each block in matrix
     def render_matrix(self):
+        """ renders each block in matrix"""
         for row in range(0, 22):
             for column in range(0, 10):
                 number = self._level.matrix[row][column]
@@ -111,7 +124,7 @@ class Renderer:
                                  pygame.Rect(x_coord, y_coord, self._scale, self._scale))
 
     def render_blocks_not_set_yet(self):
-        ### renders the two last tetriminos in array, making moving and "next" block visible
+        """ renders the two last tetriminos in array, making moving and "next" block visible """
         for number in range(0, 2):
             tetrimino = self._level.all_tetriminos[-(number+1)] # indice -1 and -2
             if tetrimino.type == 1:

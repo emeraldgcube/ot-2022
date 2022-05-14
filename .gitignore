@@ -9,7 +9,7 @@
 /src/tetr3s.code-workspace
 /src/htmlcov
 
-
+database.db
 .coverage
 .pytest_cache/
 htmlcov

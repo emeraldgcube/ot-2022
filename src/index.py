@@ -7,6 +7,8 @@ from neededthings.clock import Clock
 from neededthings.randomgenerator import Random
 
 def main():
+    """ main loop.
+    calls GameLoop with level, renderer, event_queue and clock"""
     pygame.init()
     pygame.display.set_caption("Tetris")
     #new_game()
