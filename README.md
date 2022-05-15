@@ -2,6 +2,9 @@
 
 Jatketaan viime vuonna kesken jäänyttä tetris-projektia kurssin vetäjän (Matti Luukkainen) siunauksella
 
+# Loppupalautus
+Jooh eli testasin tässä aika viimeisenä miten sovellus toimii toisella koneella, ja näköjään uusin lisäys database menee jotenkin lukkoon. En tiedä meneekö sitten testaajalla samanlailla, mutta pitää vielä hinkata tuo kuntoon tuossa parin päivän sisään, miten nyt huomenna alkavilta kesätöiltä ehtisi. Toivottavasti kenties pystytään kuitenkin testaamaan jotenkin tätä sovellusta, ettei ois yhden (oikeastaan kahden) periodin aherrus mennyt ihan hukkaan.
+
 # Tetris
 
 Tetris on klassinen peli, jossa pinotaan eri muotoisia palikoita pelikentälle, tavoitteena saada virheettömiä rivejä aikaiseksi. 
