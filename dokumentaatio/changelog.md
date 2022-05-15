@@ -9,4 +9,12 @@
 - Lisätty testejä 
 
 ## Viikko 5
-- Rendererin muutokset, loppuscriini ja uuden pelin mahdollisuus lisätty
+- Rendererin muutokset, loppuskriini ja uuden pelin mahdollisuus lisätty
+- Release 1
+
+## Viikko 6
+- Pistejärjestelmä lisätty
+
+## Viikot 7-8
+- Hiscore lisätty
+- Testit saatu jälleen toimimaan
