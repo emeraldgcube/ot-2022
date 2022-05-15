@@ -7,4 +7,8 @@
 | 6.4   | 5    | tetrimino-objektin refaktorointi, uudet testit |
 | 12.4  | 2    | yritystä erotella sovelluslogiikka käyttöliittymästä |
 | 26.4  | 6    | muutoksia lopetusruutua varten, tuloksetonta testien debuggausta |
-| yht   | 22   | |
+| 3.5   | 3    | lisätty score |
+| 10.5  | 4    | korjattu testit |
+| 13.5  | 4    | lisätty hiscore |
+| 14.5  | 2    | docstringin lisäilyä |
+| yht   | 35   | |
