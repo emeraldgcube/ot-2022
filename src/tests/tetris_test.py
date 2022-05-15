@@ -68,6 +68,12 @@ class StubRenderer:
 class TestLevel(unittest.TestCase):
     def setUp(self):
         self.level = Level(StubRandom())
+        self.s_sp = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
+        self.s_d = StubEvent(pygame.KEYDOWN, pygame.K_DOWN)
+        self.s_u = StubEvent(pygame.KEYDOWN, pygame.K_UP)
+        self.s_l = StubEvent(pygame.KEYDOWN, pygame.K_LEFT)
+        self.s_r = StubEvent(pygame.KEYDOWN, pygame.K_RIGHT)
+        self.s_25 = StubEvent(25)
 
     def makeStubSpace(self):
         return StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
@@ -78,39 +84,67 @@ class TestLevel(unittest.TestCase):
         tetriminotypes = list(types)
         self.assertEqual(tetriminotypes, [7, 6])
 
-    def test_moveset_clears_one_line(self):
-        stub_press_space = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
-        stub_press_down = StubEvent(pygame.KEYDOWN, pygame.K_DOWN)
-        stub_press_up = StubEvent(pygame.KEYDOWN, pygame.K_UP)
-        stub_press_left = StubEvent(pygame.KEYDOWN, pygame.K_LEFT)
-        stub_press_right = StubEvent(pygame.KEYDOWN, pygame.K_RIGHT)
-
-        queue = StubEventQueue([stub_press_space, stub_press_space, stub_press_space,
-                                stub_press_right, stub_press_right, stub_press_up, stub_press_space,
-                                stub_press_left, stub_press_left, stub_press_left, stub_press_left, 
-                                stub_press_space, stub_press_left, stub_press_left, stub_press_up,
-                                stub_press_up, stub_press_up, stub_press_space, stub_press_space, 
-                                stub_press_down, StubEvent("stop_loop")])
+    def test_movement_left(self):
+        queue = StubEventQueue([self.s_l, StubEvent("stop_loop")])
         loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
         loop.start()
-        #types = map(lambda x: x.type, self.level.all_tetriminos)
-        #tetriminotypes = list(types)
-        #self.assertEqual(tetriminotypes, [7, 6, 5, 4, 3, 2, 1, 1, 1])
-        self.assertEqual(self.level.score, 50)
+        block_in_air = self.level.all_tetriminos[-2]
+        self.assertEqual(block_in_air.position, (0, 3))
+
+    def test_movement_right(self):
+        queue = StubEventQueue([self.s_r, StubEvent("stop_loop")])
+        loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
+        loop.start()
+        block_in_air = self.level.all_tetriminos[-2]
+        self.assertEqual(block_in_air.position, (0, 5))
+
+    def test_movement_down(self):
+        queue = StubEventQueue([self.s_d, StubEvent("stop_loop")])
+        loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
+        loop.start()
+        block_in_air = self.level.all_tetriminos[-2]
+        self.assertEqual(block_in_air.position, (1, 4))
+
+    def test_movement_rotate(self):
+        queue = StubEventQueue([self.s_u, StubEvent("stop_loop")])
+        loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
+        loop.start()
+        block_in_air = self.level.all_tetriminos[-2]
+        self.assertEqual(block_in_air.rotation, 1)
+
+    def test_stub_tetriminos_are_right(self):
+        queue = StubEventQueue([self.s_sp, self.s_sp, self.s_sp, self.s_sp,
+                                self.s_sp, self.s_sp, self.s_sp, self.s_sp,
+                                StubEvent("stop_loop")])
+        loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
+        loop.start()
+        types = map(lambda x: x.type, self.level.all_tetriminos)
+        tetriminotypes = list(types)
+        self.assertEqual(tetriminotypes, [7, 6, 5, 4, 3, 2, 1, 1, 1, 1])
 
     def test_movement_dropdown(self):
-        stub_press_space = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
-        queue = StubEventQueue([stub_press_space, StubEvent("stop_loop")])
+        queue = StubEventQueue([self.s_sp, StubEvent("stop_loop")])
         loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
         loop.start()
         self.assertEqual(len(self.level.all_tetriminos), 3)
 
+    def test_moveset_clears_one_line(self):
+        queue = StubEventQueue([self.s_sp, self.s_sp, self.s_sp,
+                                self.s_r, self.s_r, self.s_u, self.s_sp,
+                                self.s_l, self.s_l, self.s_l, self.s_l, 
+                                self.s_sp, self.s_l, self.s_l, self.s_u,
+                                self.s_u, self.s_u, self.s_sp, self.s_sp, 
+                                self.s_d, self.s_25, StubEvent("stop_loop")])
+        loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
+        loop.start()
+        self.assertEqual(self.level.score, 50)
+
     def test_game_ends(self):
-        stub_press_space = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
-        queue = StubEventQueue([stub_press_space, stub_press_space, stub_press_space, 
-                                stub_press_space, stub_press_space, stub_press_space, 
-                                stub_press_space, stub_press_space, stub_press_space, 
-                                stub_press_space, stub_press_space, stub_press_space, 
+        self.s_sp = StubEvent(pygame.KEYDOWN, pygame.K_SPACE)
+        queue = StubEventQueue([self.s_sp, self.s_sp, self.s_sp, 
+                                self.s_sp, self.s_sp, self.s_sp, 
+                                self.s_sp, self.s_sp, self.s_sp, 
+                                self.s_sp, self.s_sp, self.s_sp, 
                                 StubEvent("stop_loop")])
         loop = GameLoop(self.level, StubRenderer(), queue, StubClock())
         loop.start()

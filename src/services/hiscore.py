@@ -41,5 +41,5 @@ class Hiscore:
         self.cursor.execute('INSERT INTO scores VALUES (?, ?)', [self.name, score])
         self.conn.commit()
 
-    def close(self):
+    def _close(self):
         self.conn.close()

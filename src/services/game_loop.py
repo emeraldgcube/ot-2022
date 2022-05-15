@@ -4,15 +4,23 @@ import pygame
 
 class GameLoop:
     def __init__(self, level, renderer, event_queue, clock):
+        """ initializes loop.
+        args: level for level,
+            renderer for pygame renderer,
+            event queue for pygame events,
+            clock for timer and ticks (fps)
+        """
         self._level = level
         self._renderer = renderer
         self._event_queue = event_queue
         self._clock = clock
-        """set timer for block to fall"""
-        self._clock.set_timer(25, int(1000/self._level.speed))
+        speed = int(1000/self._level.speed)
+        self._clock.set_timer(25, speed)
+        # set timer for block to fall
         self.stop_loop = False
 
     def start(self):
+        """ starts loop """
         while not self._level.game_over and not self.stop_loop:
             self.go_through_events_during_game()
             self._renderer.render_game()
@@ -25,10 +33,12 @@ class GameLoop:
             
 
     def go_through_events_during_game(self):
+        """ goes through event_queue for events """
         for event in self._event_queue.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LEFT:
                     self._level.controls("left")
@@ -40,11 +50,6 @@ class GameLoop:
                     self._level.controls("down")
                 if event.key == pygame.K_UP:
                     self._level.controls("rotate")
-                    #rotating clockwise and counter-clockwise
-                if event.key == pygame.K_a:
-                    self._level.controls("countercw")
-                if event.key == pygame.K_d:
-                    self._level.controls("cw")
 
             if event.type == 25:
                 self._level.controls("down")
@@ -54,6 +59,7 @@ class GameLoop:
                 self.stop_loop = True
 
     def go_through_events_in_hiscore(self):
+        """ goes through events while in hiscore """
         for event in self._event_queue.get():
             if event.type == pygame.QUIT:
                 pygame.quit()

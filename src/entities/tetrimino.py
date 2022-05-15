@@ -1,14 +1,21 @@
 class Tetrimino:
+    """ Class for tetrimino blocks """
+
     def __init__(self, random):
+        """ initialize tetrimino.
+        args: random (random number from 1-7)
+        default position is in the "next"-block
+        """
         self.type = random
-        self.blocks = self.get_blocks()
+        self.blocks = self._get_blocks()
         self.position = (3, 13)
         self.rotation = 0
 
     def rotate(self):
+        """ callable function for rotating a block """
         self.rotation += 1
 
-    def get_blocks(self):
+    def _get_blocks(self):
         if self.type == 1: # T
             blocks = [[(0, 1), (1, 0), (1, 1), (2, 1)], [(0, 0), (0, 1), (0, 2), (1, 1)],
                       [(0, 0), (1, 0), (1, 1), (2, 0)], [(0, 1), (1, 0), (1, 1), (1, 2)]]

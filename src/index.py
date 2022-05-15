@@ -8,14 +8,14 @@ from neededthings.randomgenerator import Random
 
 def main():
     """ main loop.
-    calls GameLoop with level, renderer, event_queue and clock"""
+    calls GameLoop with level, renderer, event_queue and clock as parameters """
     pygame.init()
     pygame.display.set_caption("Tetris")
-    #new_game()
     scale = 30
     screen_width = 26*scale
     screen_height = 22*scale
     window = pygame.display.set_mode((screen_width, screen_height))
+    
     clock = Clock()
     random = Random()
     level = Level(random)
