@@ -45,3 +45,4 @@ poetry run invoke lint
 - [Changelog](./dokumentaatio/changelog.md)
 - [Sekvenssikaavio](./dokumentaatio/kuvat/sekvenssikaaviotetris.jpg)
 - [Arkkitehtuuri](./dokumentaatio/arkkitehtuuri.md)
+- [Testaus](./dokumentaatio/testaus.md)
